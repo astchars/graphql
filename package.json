@@ -1,0 +1,33 @@
+{
+  "name": "graphql",
+  "version": "1.0.0",
+  "description": "Implementando uma API em GraphQL",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astchars/graphql.git"
+  },
+  "keywords": [
+    "GraphQL",
+    "Javascript",
+    "Apollo",
+    "Server",
+    "Charlie"
+  ],
+  "author": "Charles Jamil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/astchars/graphql/issues"
+  },
+  "homepage": "https://github.com/astchars/graphql#readme",
+  "dependencies": {
+    "apollo-server": "^2.4.8",
+    "graphql": "^14.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
