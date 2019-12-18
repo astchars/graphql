@@ -1,12 +1,26 @@
 const { ApolloServer, gql } = require('apollo-server');
 
-// Definição de tipos que serão tratados.
+// Definição de tipos que serão tratados. Este é o schema
 // Caso o nome seja diferente de typeDef, é necessário atribuí-la no construtor
-const nomeDiferenteTypeDefs = gql``;
+const nomeDiferenteTypeDefs = gql`
+	# Este será o tipo consulta
+	type Query {
+		ola: String
+	}
+`;
 
 // Conjunto de funções que resolvem/tratam dados.
 // Caso o nome seja diferente de resolvers, é necessário atribuí-la no construtor
-const nomeDiferenteResolvers = {};
+const nomeDiferenteResolvers = {
+
+	// Neste ponto definimos nossa primeira query
+	Query: {
+		ola() {
+			return "String qualquer!"
+		}
+	}
+
+};
 
 // Construtor
 const server = new ApolloServer({
