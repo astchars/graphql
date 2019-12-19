@@ -1,43 +1,59 @@
 const { ApolloServer, gql } = require('apollo-server');
 
-// Tipos de dados suportados pelo GraphQL:
-// Int, Float, String, Boolean e ID
-// Caso seja necessário criar um outro tipo, podemos criar um tipo scalar
+// Definindo um tipo novo, tipo Usuario
+// ! obriga o retorno e tipo
 const nomeDiferenteTypeDefs = gql`
+	# Tipo scalar simples
 	scalar Date
+	
+	# Tipo abstrato que quero criar
+	type Usuario {
+		id: ID
+		nome: String!
+		email: String!
+		idade: Int
+		salario: Float
+		vip: Boolean
+	}
 
-	# Este será o tipo consulta, ou retorno.
+	# Tipos de query que teremos
 	type Query {
 		ola: String
-		horaAtual: Date
+		horaAtual: Date!
+		usuarioLogado: Usuario!
 	}
 `;
 
 const nomeDiferenteResolvers = {
 
-	// Aqui temos nossas funções
 	Query: {
+
 		ola () {
 			return 'String qualquer!';
 		},
 
 		horaAtual () {
 			return new Date;
+		},
+
+		usuarioLogado() {
+			return {
+				id: 1,
+				nome: "Charlie Jamil",
+				email: "cbjamil@gmail.com",
+				idade: 25,
+				salario: 5050.50,
+				vip: true
+			}
 		}
 	}
 };
 
 // Construtor
 const server = new ApolloServer({
-
 	typeDefs: nomeDiferenteTypeDefs,
 	resolvers: nomeDiferenteResolvers
-
 });
 
 // Inicialização do servidor.
-server.listen().then(
-
-	({ url }) => console.log(`Executando em ${url}`)
-
-);
+server.listen().then(({ url }) => console.log(`Executando em ${url}`));
